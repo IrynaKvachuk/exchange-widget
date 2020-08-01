@@ -26,7 +26,7 @@ fetch(url)
     })
 
 let getDate = (storage) => {
-    exchangeDate.innerText = storage[0].exchangedate;
+    exchangeDate.innerText = "Exchange date: " + storage[0].exchangedate;
 }
 
 let appendCurrency = (abb, fullName, input) => {
@@ -80,10 +80,10 @@ let convertCurrency = (amount, inputCurrencyValue, outputCurrencyValue, inputCur
         return amount;
     }
     if (inputCur == "UAH") {
-        return (amount * outputCurrency.rate).toLocaleString('en-US');
+        return (amount / outputCurrency.rate).toLocaleString('en-US');
     }
     if (outputCur == "UAH") {
-        return (amount / inputCurrency.rate).toLocaleString('en-US');
+        return (amount * inputCurrency.rate).toLocaleString('en-US');
     }
     return (((amount * inputCurrency.rate) / outputCurrency.rate).toLocaleString('en-US'));
 }
